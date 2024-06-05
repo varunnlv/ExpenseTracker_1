@@ -9,7 +9,7 @@ server.use(router);
 
 exports.handler = async (event, context) => {
     return new Promise((resolve, reject) => {
-        server.listen(3001, () => {
+        server.listen(3000, () => {
             resolve({
                 statusCode: 200,
                 body: JSON.stringify({ message: 'JSON Server is running' }),
