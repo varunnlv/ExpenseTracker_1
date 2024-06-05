@@ -1,0 +1,93 @@
+{
+  "users": [
+    {
+      "id": "5f5f",
+      "username": "wewew",
+      "password": "2711999"
+    },
+    {
+      "id": "13aa",
+      "username": "tttt",
+      "password": "2711999"
+    },
+    {
+      "id": "d9b5",
+      "username": "ewewew",
+      "password": "2711999"
+    },
+    {
+      "id": "140f",
+      "username": "bbbb",
+      "password": "5454"
+    },
+    {
+      "id": "2e5b",
+      "username": "zzzz",
+      "password": "34344"
+    }
+  ],
+  "budgets": [
+    {
+      "id": "49f6",
+      "budgetname": "DDDD",
+      "budgetamount": "545",
+      "userId": "4e3d"
+    },
+    {
+      "id": "35bd",
+      "budgetname": "gfgfgf",
+      "budgetamount": "212",
+      "userId": "d9b5"
+    },
+    {
+      "id": "6b90",
+      "budgetname": "jghj",
+      "budgetamount": "6757",
+      "userId": "140f"
+    },
+    {
+      "id": "5ca1",
+      "budgetname": "njhghj",
+      "budgetamount": "555",
+      "userId": "140f"
+    },
+    {
+      "id": "005c",
+      "budgetname": "vcfdfg",
+      "budgetamount": "7887",
+      "userId": "140f"
+    },
+    {
+      "id": "23b4",
+      "budgetname": "fgd",
+      "budgetamount": "5456",
+      "userId": "2e5b"
+    },
+    {
+      "id": "2f36",
+      "budgetname": " vbv",
+      "budgetamount": "5",
+      "userId": "2e5b"
+    },
+    {
+      "id": "3945",
+      "budgetname": "gfhd",
+      "budgetamount": "46",
+      "userId": "2e5b"
+    },
+    {
+      "id": "4f9a",
+      "budgetname": "fdgdg",
+      "budgetamount": "334",
+      "userId": "2e5b"
+    }
+  ],
+  "expenses": [
+    {
+      "id": "31d5",
+      "expensename": "cdg",
+      "expenseamount": "545",
+      "budgetId": "1aad01c7-ade3-465a-b1f5-082530a37b78"
+    }
+  ]
+}
