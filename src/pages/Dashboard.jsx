@@ -53,7 +53,7 @@ export async function dashboardAction({ request }) {
         console.log('already exists');
 
         // Make a GET request to the server to retrieve userId based on username
-        const response = await fetch(`http://localhost:3000/users?username=${values.userName}`);
+        const response = await fetch(`http://localhost:3001/users?username=${values.userName}`);
         const userData = await response.json();
 
         if (!userData || userData.length === 0) {
@@ -62,7 +62,7 @@ export async function dashboardAction({ request }) {
 
         const userId = userData[0].id;
 
-        const usersResponse2 = await fetch('http://localhost:3000/budgets');
+        const usersResponse2 = await fetch('http://localhost:3001/budgets');
         const budgets2 = await usersResponse2.json();
 
 
@@ -85,7 +85,7 @@ export async function dashboardAction({ request }) {
 
 
 
-        const usersResponse3 = await fetch('http://localhost:3000/expenses');
+        const usersResponse3 = await fetch('http://localhost:3001/expenses');
         const budgets3 = await usersResponse3.json();
 
         // // Filter budgets by userId
