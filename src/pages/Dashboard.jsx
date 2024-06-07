@@ -126,7 +126,7 @@ export async function dashboardAction({ request }) {
           password: values.password,
         };
 
-        await fetch('https://main--expense-v-tracker.netlify.app/users', {
+        await fetch('http://localhost:3001/users', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -155,7 +155,7 @@ export async function dashboardAction({ request }) {
       const username = JSON.parse(localStorage.getItem("userName")); // Retrieve username from localStorage
 
       // Make a GET request to the server to retrieve userId based on username
-      const response = await fetch(`/api/users?username=${username}`);
+      const response = await fetch(`http://localhost:3001/users?username=${username}`);
       const userData = await response.json();
 
       if (!userData || userData.length === 0) {
@@ -196,7 +196,7 @@ export async function dashboardAction({ request }) {
       const username = JSON.parse(localStorage.getItem("userName")); // Retrieve username from localStorage
 
       // Make a GET request to the server to retrieve userId based on username
-      const response = await fetch(`/api/users?username=${username}`);
+      const response = await fetch(`http://localhost:3001/users?username=${username}`);
       const userData = await response.json();
 
       if (!userData || userData.length === 0) {
@@ -209,7 +209,7 @@ export async function dashboardAction({ request }) {
 
 
       // // Make a GET request to the server to retrieve userId based on username
-      const response2 = await fetch(`/api/budgets?userId=${userId8}`);
+      const response2 = await fetch(`http://localhost:3001/budgets?userId=${userId8}`);
       const userData2 = await response2.json();
 
       if (!userData2 || userData2.length === 0) {
@@ -233,7 +233,7 @@ export async function dashboardAction({ request }) {
 
 
       // // Make a POST request to create the expense
-      await fetch(`/api/expenses`, {
+      await fetch(`http://localhost:3001/expenses`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -267,7 +267,7 @@ export async function dashboardAction({ request }) {
       const username = JSON.parse(localStorage.getItem("userName")); // Retrieve username from localStorage
 
       // Make a GET request to the server to retrieve userId based on username
-      const response = await fetch(`/api/users?username=${username}`);
+      const response = await fetch(`http://localhost:3001/users?username=${username}`);
       const userData = await response.json();
 
       if (!userData || userData.length === 0) {
@@ -278,7 +278,7 @@ export async function dashboardAction({ request }) {
 
 
       // Make a GET request to the server to retrieve userId based on username
-      const response2 = await fetch(`/api/budgets?userId=${userId}`);
+      const response2 = await fetch(`http://localhost:3001/budgets?userId=${userId}`);
       const userData2 = await response.json();
 
       if (!userData2 || userData2.length === 0) {
@@ -289,7 +289,7 @@ export async function dashboardAction({ request }) {
 
 
       // Make a GET request to the server to retrieve userId based on username
-      const response3 = await fetch(`/api/expenses?budgetId=${userId2}`);
+      const response3 = await fetch(`http://localhost:3001/expenses?budgetId=${userId2}`);
       const userData3 = await response.json();
 
       if (!userData3 || userData3.length === 0) {
@@ -307,7 +307,7 @@ export async function dashboardAction({ request }) {
 
 
       // Then, make a DELETE request to delete the expense from the server
-      await fetch(`/api/expenses/${expenseId}`, {
+      await fetch(`http://localhost:3001/expenses/${expenseId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
