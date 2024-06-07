@@ -126,7 +126,7 @@ export async function dashboardAction({ request }) {
           password: values.password,
         };
 
-        await fetch('http://localhost:3001/users', {
+        await fetch('https://expensetracker-1-5eht.onrender.com/users', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
