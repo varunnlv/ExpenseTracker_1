@@ -44,7 +44,7 @@ export async function dashboardAction({ request }) {
       localStorage.setItem("password", JSON.stringify(values.password));
 
       // Fetch all users from the server
-      const usersResponse = await fetch('http://localhost:3001/users');
+      const usersResponse = await fetch('https://expensetracker-1-5eht.onrender.com/users');
       const users = await usersResponse.json();
 
       // Check if the username already exists in the users database
@@ -53,7 +53,7 @@ export async function dashboardAction({ request }) {
         console.log('already exists');
 
         // Make a GET request to the server to retrieve userId based on username
-        const response = await fetch(`http://localhost:3001/users?username=${values.userName}`);
+        const response = await fetch(`https://expensetracker-1-5eht.onrender.com/users?username=${values.userName}`);
         const userData = await response.json();
 
         if (!userData || userData.length === 0) {
@@ -62,7 +62,7 @@ export async function dashboardAction({ request }) {
 
         const userId = userData[0].id;
 
-        const usersResponse2 = await fetch('http://localhost:3001/budgets');
+        const usersResponse2 = await fetch('https://expensetracker-1-5eht.onrender.com/budgets');
         const budgets2 = await usersResponse2.json();
 
 
@@ -85,7 +85,7 @@ export async function dashboardAction({ request }) {
 
 
 
-        const usersResponse3 = await fetch('http://localhost:3001/expenses');
+        const usersResponse3 = await fetch('https://expensetracker-1-5eht.onrender.com/expenses');
         const budgets3 = await usersResponse3.json();
 
         // // Filter budgets by userId
@@ -155,7 +155,7 @@ export async function dashboardAction({ request }) {
       const username = JSON.parse(localStorage.getItem("userName")); // Retrieve username from localStorage
 
       // Make a GET request to the server to retrieve userId based on username
-      const response = await fetch(`http://localhost:3001/users?username=${username}`);
+      const response = await fetch(`https://expensetracker-1-5eht.onrender.com/users?username=${username}`);
       const userData = await response.json();
 
       if (!userData || userData.length === 0) {
@@ -170,7 +170,7 @@ export async function dashboardAction({ request }) {
         userId: userId,
       };
 
-      await fetch(`/api/budgets`, {
+      await fetch(`https://expensetracker-1-5eht.onrender.com/budgets`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -196,7 +196,7 @@ export async function dashboardAction({ request }) {
       const username = JSON.parse(localStorage.getItem("userName")); // Retrieve username from localStorage
 
       // Make a GET request to the server to retrieve userId based on username
-      const response = await fetch(`http://localhost:3001/users?username=${username}`);
+      const response = await fetch(`https://expensetracker-1-5eht.onrender.com/users?username=${username}`);
       const userData = await response.json();
 
       if (!userData || userData.length === 0) {
@@ -209,7 +209,7 @@ export async function dashboardAction({ request }) {
 
 
       // // Make a GET request to the server to retrieve userId based on username
-      const response2 = await fetch(`http://localhost:3001/budgets?userId=${userId8}`);
+      const response2 = await fetch(`https://expensetracker-1-5eht.onrender.com/budgets?userId=${userId8}`);
       const userData2 = await response2.json();
 
       if (!userData2 || userData2.length === 0) {
@@ -233,7 +233,7 @@ export async function dashboardAction({ request }) {
 
 
       // // Make a POST request to create the expense
-      await fetch(`http://localhost:3001/expenses`, {
+      await fetch(`https://expensetracker-1-5eht.onrender.com/expenses`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -267,7 +267,7 @@ export async function dashboardAction({ request }) {
       const username = JSON.parse(localStorage.getItem("userName")); // Retrieve username from localStorage
 
       // Make a GET request to the server to retrieve userId based on username
-      const response = await fetch(`http://localhost:3001/users?username=${username}`);
+      const response = await fetch(`https://expensetracker-1-5eht.onrender.com/users?username=${username}`);
       const userData = await response.json();
 
       if (!userData || userData.length === 0) {
@@ -278,7 +278,7 @@ export async function dashboardAction({ request }) {
 
 
       // Make a GET request to the server to retrieve userId based on username
-      const response2 = await fetch(`http://localhost:3001/budgets?userId=${userId}`);
+      const response2 = await fetch(`https://expensetracker-1-5eht.onrender.com/budgets?userId=${userId}`);
       const userData2 = await response.json();
 
       if (!userData2 || userData2.length === 0) {
@@ -289,7 +289,7 @@ export async function dashboardAction({ request }) {
 
 
       // Make a GET request to the server to retrieve userId based on username
-      const response3 = await fetch(`http://localhost:3001/expenses?budgetId=${userId2}`);
+      const response3 = await fetch(`https://expensetracker-1-5eht.onrender.com/expenses?budgetId=${userId2}`);
       const userData3 = await response.json();
 
       if (!userData3 || userData3.length === 0) {
@@ -307,7 +307,7 @@ export async function dashboardAction({ request }) {
 
 
       // Then, make a DELETE request to delete the expense from the server
-      await fetch(`http://localhost:3001/expenses/${expenseId}`, {
+      await fetch(`https://expensetracker-1-5eht.onrender.com/expenses/${expenseId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
