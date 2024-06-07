@@ -126,7 +126,7 @@ export async function dashboardAction({ request }) {
           password: values.password,
         };
 
-        await fetch('/api/users', {
+        await fetch('https://main--expense-v-tracker.netlify.app/users', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
