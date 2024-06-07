@@ -50,7 +50,7 @@ export async function budgetAction({ request }) {
       const username = JSON.parse(localStorage.getItem("userName")); // Retrieve username from localStorage
 
       // Make a GET request to the server to retrieve userId based on username
-      const response = await fetch(`/api/users?username=${username}`);
+      const response = await fetch(`https://expensetracker-1-5eht.onrender.com/users?username=${username}`);
       const userData = await response.json();
 
       if (!userData || userData.length === 0) {
@@ -61,7 +61,7 @@ export async function budgetAction({ request }) {
 
 
       // Make a GET request to the server to retrieve userId based on username
-      const response2 = await fetch(`/api/budgets?userId=${userId}`);
+      const response2 = await fetch(`https://expensetracker-1-5eht.onrender.com/budgets?userId=${userId}`);
       const userData2 = await response.json();
 
       if (!userData2 || userData2.length === 0) {
@@ -83,7 +83,7 @@ export async function budgetAction({ request }) {
 
 
       // Make a POST request to create the expense
-      await fetch(`/api/expenses`, {
+      await fetch(`https://expensetracker-1-5eht.onrender.com/expenses`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -117,7 +117,7 @@ export async function budgetAction({ request }) {
       const username = JSON.parse(localStorage.getItem("userName")); // Retrieve username from localStorage
 
       // Make a GET request to the server to retrieve userId based on username
-      const response = await fetch(`/api/users?username=${username}`);
+      const response = await fetch(`https://expensetracker-1-5eht.onrender.com/users?username=${username}`);
       const userData = await response.json();
 
       if (!userData || userData.length === 0) {
@@ -128,7 +128,7 @@ export async function budgetAction({ request }) {
 
 
       // Make a GET request to the server to retrieve userId based on username
-      const response2 = await fetch(`/api/budgets?userId=${userId}`);
+      const response2 = await fetch(`https://expensetracker-1-5eht.onrender.com/budgets?userId=${userId}`);
       const userData2 = await response.json();
 
       if (!userData2 || userData2.length === 0) {
@@ -139,7 +139,7 @@ export async function budgetAction({ request }) {
 
 
       // Make a GET request to the server to retrieve userId based on username
-      const response3 = await fetch(`/api/expenses?budgetId=${userId2}`);
+      const response3 = await fetch(`https://expensetracker-1-5eht.onrender.com/expenses?budgetId=${userId2}`);
       const userData3 = await response.json();
 
       if (!userData3 || userData3.length === 0) {
@@ -157,7 +157,7 @@ export async function budgetAction({ request }) {
 
 
       // Then, make a DELETE request to delete the expense from the server
-      await fetch(`/api/expenses/${expenseId}`, {
+      await fetch(`https://expensetracker-1-5eht.onrender.com/expenses/${expenseId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
