@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"vite\" \"json-server --watch db.json --port https://main--expense-v-tracker.netlify.app"",
+    "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -20,7 +20,6 @@
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react-swc": "^3.0.0",
-    "concurrently": "^8.2.2",
     "netlify-lambda": "^2.0.16",
     "vite": "^4.1.0"
   }
