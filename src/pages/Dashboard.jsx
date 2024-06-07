@@ -44,7 +44,7 @@ export async function dashboardAction({ request }) {
       localStorage.setItem("password", JSON.stringify(values.password));
 
       // Fetch all users from the server
-      const usersResponse = await fetch('/api/users');
+      const usersResponse = await fetch('http://localhost:3001/users');
       const users = await usersResponse.json();
 
       // Check if the username already exists in the users database
