@@ -16,7 +16,7 @@ const Intro = () => {
         <p>
           Personal budgeting is the secret to financial freedom. Start your journey today.
         </p>
-        <Form method="post">
+        <Form method="post" onSubmit={(e) => e.nativeEvent.submit()}>
           <input
             type="text"
             name="userName"
