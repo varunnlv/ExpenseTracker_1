@@ -26,10 +26,11 @@ export async function budgetLoader({ params }) {
     value: params.id,
   });
 
+  
   if (!budget) {
     throw new Error("The budget you’re trying to find doesn’t exist");
   }
-
+  window.location.reload();
   return { budget, expenses };
 }
 
@@ -99,7 +100,7 @@ export async function budgetAction({ request }) {
 
 
 
-
+      window.location.reload();
       return toast.success(`Expense ${values.newExpense} created!`);
     } catch (e) {
       throw new Error("There was a problem creating your expense.");
@@ -163,7 +164,7 @@ export async function budgetAction({ request }) {
           'Content-Type': 'application/json',
         },
       });
-
+       window.location.reload();
       return toast.success("Expense deleted!");
     } catch (e) {
       throw new Error("There was a problem deleting your expense.");
