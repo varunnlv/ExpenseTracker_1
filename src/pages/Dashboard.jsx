@@ -109,6 +109,8 @@ export async function dashboardAction({ request }) {
           }
         });
 
+        window.location.reload();
+
 
 
 
@@ -137,6 +139,8 @@ export async function dashboardAction({ request }) {
         console.log('New user created');
 
       }
+
+      window.location.reload();
 
       return toast.success(`Welcome, ${values.userName}`);
     } catch (e) {
