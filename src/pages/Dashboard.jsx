@@ -181,7 +181,7 @@ export async function dashboardAction({ request }) {
         },
         body: JSON.stringify(newBudget),
       });
-
+      window.location.reload();
       return toast.success("Budget created!");
     } catch (e) {
       throw new Error("There was a problem creating your budget.");
@@ -252,7 +252,7 @@ export async function dashboardAction({ request }) {
 
 
 
-
+      window.location.reload();
 
       return toast.success(`Expense ${values.newExpense} created!`);
     } catch (e) {
@@ -317,7 +317,7 @@ export async function dashboardAction({ request }) {
           'Content-Type': 'application/json',
         },
       });
-
+      window.location.reload();
       return toast.success("Expense deleted!");
     } catch (e) {
       throw new Error("There was a problem deleting your expense.");
