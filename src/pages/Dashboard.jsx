@@ -47,6 +47,8 @@ export async function dashboardAction({ request }) {
       const usersResponse = await fetch('https://expensetracker-1-5eht.onrender.com/users');
       const users = await usersResponse.json();
 
+      console.log('1');
+
       // Check if the username already exists in the users database
       const existingUser = users.find(user => user.username === values.userName);
       if (existingUser) {
@@ -128,6 +130,7 @@ export async function dashboardAction({ request }) {
           password: values.password,
         };
 
+        console.log('2');
         await fetch('https://expensetracker-1-5eht.onrender.com/users', {
           method: 'POST',
           headers: {
