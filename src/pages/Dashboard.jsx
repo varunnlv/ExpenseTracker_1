@@ -131,16 +131,22 @@ export async function dashboardAction({ request }) {
         };
 
         console.log('2');
-        await fetch('https://expensetracker-1-5eht.onrender.com/users', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(newUser),
-        });
-
-        console.log('New user created');
-
+          try{
+    
+               
+            await fetch('https://expensetracker-1-5eht.onrender.com/users', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(newUser),
+            });
+    
+            console.log('New user created');
+    
+             } catch (e) {
+          throw new Error("There was a problem creating your user.");
+        }
       }
 
       window.location.reload();
