@@ -82,7 +82,7 @@ const Intro = () => {
             {errors.password && <p className="error">{errors.password}</p>}
           </div>
           <input type="hidden" name="_action" value="newUser" />
-          <button type="submit" className="btn btn--dark" disabled={isLoading}>
+{/*           <button type="submit" className="btn btn--dark" disabled={isLoading}>
             {isLoading ? (
               <span>Loading...</span>
             ) : (
@@ -91,7 +91,12 @@ const Intro = () => {
                 <UserPlusIcon width={20} />
               </>
             )}
-          </button>
+          </button> */}
+
+             <button type="submit" className="btn btn--dark">
+    <span>Create Account</span>
+    <UserPlusIcon width={20} />
+  </button>
 
         </Form>
       </div>
