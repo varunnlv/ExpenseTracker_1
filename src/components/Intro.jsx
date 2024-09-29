@@ -50,12 +50,15 @@
 
 
 import { useState } from "react";
+import { useRef } from "react";
+
 import { Form } from "react-router-dom";
 import { UserPlusIcon } from "@heroicons/react/24/solid";
 
 const Intro = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({ userName: "", password: "" });
+  const formRef = useRef();
 
   const validateForm = (userName, password) => {
     let isValid = true;
@@ -98,7 +101,7 @@ const Intro = () => {
 
       // Simulate form submission delay
       setTimeout(() => {
-        event.target.submit(); // Submit the form after the loading state
+        formRef.current.submit(); 
       }, 1000); // Optional delay to demonstrate loading spinner
     }
   };
