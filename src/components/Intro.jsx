@@ -1,4 +1,6 @@
-import { Form } from "react-router-dom"
+import { Form } from "react-router-dom";
+
+import { useState } from "react";
 
 // library
 import { UserPlusIcon } from "@heroicons/react/24/solid";
@@ -7,6 +9,38 @@ import { UserPlusIcon } from "@heroicons/react/24/solid";
 import illustration from "../assets/illustration.jpg"
 
 const Intro = () => {
+
+    const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState({ userName: "", password: "" });
+
+  const validateForm = (userName, password) => {
+    let isValid = true;
+    const newErrors = { userName: "", password: "" };
+
+    // Username validation (required and min length 3)
+    if (!userName) {
+      newErrors.userName = "Username is required.";
+      isValid = false;
+    } else if (userName.length < 3) {
+      newErrors.userName = "Username must be at least 3 characters long.";
+      isValid = false;
+    }
+
+    // Password validation (required, min length 6, complexity check)
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+    if (!password) {
+      newErrors.password = "Password is required.";
+      isValid = false;
+    } else if (!passwordRegex.test(password)) {
+      newErrors.password =
+        "Password must be at least 6 characters long, contain one uppercase, one lowercase, one number, and one special character.";
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  };
+  
   return (
     <div className="intro">
       <div>
@@ -23,23 +57,42 @@ const Intro = () => {
         <Form
           method="post"             
           >
-          <input
-            type="text"
-            name="userName"
-            required
-            placeholder="What is your name?" aria-label="Your Name" autoComplete="given-name"
-          />
-          <input
-            type="text"
-            name="password"
-            required
-            placeholder="Enter Password" aria-label="Your Name" autoComplete="given-password"
-          />
+           <div>
+            <input
+              type="text"
+              name="userName"
+              required
+              placeholder="What is your name?"
+              aria-label="Your Name"
+              autoComplete="given-name"
+              minLength={3} // HTML5 validation
+            />
+            {errors.userName && <p className="error">{errors.userName}</p>}
+          </div>
+          <div>
+            <input
+              type="password"
+              name="password"
+              required
+              placeholder="Enter Password"
+              aria-label="Your Password"
+              autoComplete="current-password"
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$" // HTML5 pattern validation
+            />
+            {errors.password && <p className="error">{errors.password}</p>}
+          </div>
           <input type="hidden" name="_action" value="newUser" />
-          <button type="submit" className="btn btn--dark">
-            <span>Create Account</span>
-            <UserPlusIcon width={20} />
+          <button type="submit" className="btn btn--dark" disabled={isLoading}>
+            {isLoading ? (
+              <span>Loading...</span>
+            ) : (
+              <>
+                <span>Create Account</span>
+                <UserPlusIcon width={20} />
+              </>
+            )}
           </button>
+
         </Form>
       </div>
       {/* <img src={illustration} alt="Person with money" width={600} /> */}
