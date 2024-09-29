@@ -25,6 +25,7 @@ const Intro = () => {
             onSubmit={(event) => {
                 event.preventDefault()
             }
+            }
               
           >
           <input
