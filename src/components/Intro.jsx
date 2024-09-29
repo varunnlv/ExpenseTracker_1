@@ -21,12 +21,7 @@ const Intro = () => {
                 event.preventDefault()
               } */}
         <Form
-          method="post"
-            onSubmit={(event) => {
-                event.preventDefault()
-            }
-            }
-              
+          method="post"             
           >
           <input
             type="text"
