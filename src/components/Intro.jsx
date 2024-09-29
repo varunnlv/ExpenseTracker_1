@@ -51,50 +51,29 @@ const Intro = () => {
           Personal budgeting is the secret to financial freedom. Start your journey today.
         </p> 
 
-{/*          if (!confirm("user data will be saved?")) {
-                event.preventDefault()
-              } */}
-        <Form
-          method="post"             
-          >
-            <input
-              type="text"
-              name="userName"
-              required
-              placeholder="What is your name?"
-              aria-label="Your Name"
-              autoComplete="given-name"
-              minLength={3} // HTML5 validation
-            />
-            {errors.userName && <p className="error">{errors.userName}</p>}
-            <input
-              type="password"
-              name="password"
-              required
-              placeholder="Enter Password"
-              aria-label="Your Password"
-              autoComplete="current-password"
-              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$" // HTML5 pattern validation
-            />
-            {errors.password && <p className="error">{errors.password}</p>}
-          <input type="hidden" name="_action" value="newUser" />
-{/*           <button type="submit" className="btn btn--dark" disabled={isLoading}>
-            {isLoading ? (
-              <span>Loading...</span>
-            ) : (
-              <>
-                <span>Create Account</span>
-                <UserPlusIcon width={20} />
-              </>
-            )}
-          </button> */}
-
-             <button type="submit" className="btn btn--dark">
+<Form method="post">
+  <input
+    type="text"
+    name="userName"
+    required
+    placeholder="What is your name?"
+    aria-label="Your Name"
+    autoComplete="given-name"
+  />
+  <input
+    type="password"
+    name="password"
+    required
+    placeholder="Enter Password"
+    aria-label="Your Password"
+    autoComplete="current-password"
+  />
+  <input type="hidden" name="_action" value="newUser" />
+  <button type="submit" className="btn btn--dark">
     <span>Create Account</span>
     <UserPlusIcon width={20} />
   </button>
-
-        </Form>
+</Form>  
       </div>
       {/* <img src={illustration} alt="Person with money" width={600} /> */}
     </div>
