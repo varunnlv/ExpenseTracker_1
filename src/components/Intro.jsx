@@ -116,7 +116,7 @@ const Intro = () => {
           Personal budgeting is the secret to financial freedom. Start your journey today.
         </p>
 
-        <Form method="post" onSubmit={handleSubmit}>
+        <Form ref={formRef} method="post" onSubmit={handleSubmit}>
           <div>
             <input
               type="text"
