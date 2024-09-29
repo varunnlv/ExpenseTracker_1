@@ -57,7 +57,6 @@ const Intro = () => {
         <Form
           method="post"             
           >
-           <div>
             <input
               type="text"
               name="userName"
@@ -68,8 +67,6 @@ const Intro = () => {
               minLength={3} // HTML5 validation
             />
             {errors.userName && <p className="error">{errors.userName}</p>}
-          </div>
-          <div>
             <input
               type="password"
               name="password"
@@ -80,7 +77,6 @@ const Intro = () => {
               pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$" // HTML5 pattern validation
             />
             {errors.password && <p className="error">{errors.password}</p>}
-          </div>
           <input type="hidden" name="_action" value="newUser" />
 {/*           <button type="submit" className="btn btn--dark" disabled={isLoading}>
             {isLoading ? (
