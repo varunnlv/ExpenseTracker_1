@@ -89,8 +89,6 @@ const Intro = () => {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault(); // Prevent default form submission initially
-
     const formData = new FormData(event.target);
     const userName = formData.get("userName");
     const password = formData.get("password");
