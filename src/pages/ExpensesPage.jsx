@@ -80,7 +80,6 @@ export async function expensesAction({ request }) {
         },
       });
 
-      window.location.reload();
       return toast.success("Expense deleted!");
     } catch (e) {
       throw new Error("There was a problem deleting your expense.");
