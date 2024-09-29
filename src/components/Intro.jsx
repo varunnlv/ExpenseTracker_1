@@ -15,13 +15,16 @@ const Intro = () => {
         </h1>
         <p>
           Personal budgeting is the secret to financial freedom. Start your journey today.
-        </p>       
+        </p> 
+
+{/*          if (!confirm("user data will be saved?")) {
+                event.preventDefault()
+              } */}
         <Form
           method="post"
             onSubmit={(event) => {
-              if (!confirm("user data will be saved?")) {
                 event.preventDefault()
-              }
+              
           >
           <input
             type="text"
