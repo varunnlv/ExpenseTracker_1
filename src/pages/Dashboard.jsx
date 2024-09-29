@@ -111,7 +111,6 @@ export async function dashboardAction({ request }) {
           }
         });
 
-        window.location.reload();
 
 
 
@@ -149,7 +148,6 @@ export async function dashboardAction({ request }) {
         }
       }
 
-      window.location.reload();
 
       return toast.success(`Welcome, ${values.userName}`);
     } catch (e) {
@@ -190,7 +188,6 @@ export async function dashboardAction({ request }) {
         },
         body: JSON.stringify(newBudget),
       });
-      window.location.reload();
       return toast.success("Budget created!");
     } catch (e) {
       throw new Error("There was a problem creating your budget.");
@@ -253,15 +250,6 @@ export async function dashboardAction({ request }) {
         },
         body: JSON.stringify(newExpense),
       });
-
-
-
-
-
-
-
-
-      window.location.reload();
 
       return toast.success(`Expense ${values.newExpense} created!`);
     } catch (e) {
