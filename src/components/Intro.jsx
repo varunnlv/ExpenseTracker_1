@@ -101,7 +101,7 @@ const Intro = () => {
 
       // Simulate form submission delay
       setTimeout(() => {
-        formRef.current.submit(); 
+        window.location.reload(); 
       }, 1000); // Optional delay to demonstrate loading spinner
     }
   };
@@ -116,7 +116,7 @@ const Intro = () => {
           Personal budgeting is the secret to financial freedom. Start your journey today.
         </p>
 
-        <Form ref={formRef} method="post" onSubmit={handleSubmit}>
+        <Form method="post" onSubmit={handleSubmit}>
           <div>
             <input
               type="text"
