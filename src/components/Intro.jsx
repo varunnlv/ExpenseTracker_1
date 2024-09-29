@@ -18,7 +18,7 @@ const Intro = () => {
         </p>       
         <Form
           method="post"
-          action="logout"
+{/*           action="logout" */}
             onSubmit={(event) => {
               if (!confirm("user data will be saved?")) {
                 event.preventDefault()
