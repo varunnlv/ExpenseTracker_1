@@ -32,11 +32,13 @@ export function dashboardLoader() {
 // action
 export async function dashboardAction({ request }) {
   console.log('started intially0 ');
+  toast.success(`started but but`);
   await waait();
+
   console.log('started intially');
   const data = await request.formData();
   const { _action, ...values } = Object.fromEntries(data);
-
+  toast.success(`started intially`);
   // new user submission
   if (_action === "newUser") {
     try {
