@@ -32,7 +32,7 @@ export function dashboardLoader() {
 // action
 export async function dashboardAction({ request }) {
   console.log('started intially0 ');
-  toast.success(`started but but`);
+  toast.success(`Logging in `);
   await waait();
 
   console.log('started intially');
@@ -44,7 +44,7 @@ export async function dashboardAction({ request }) {
     try {
       localStorage.setItem("userName", JSON.stringify(values.userName));
       localStorage.setItem("password", JSON.stringify(values.password));
-      console.log('started but but ');
+      console.log('Please Wait... ');
       // Fetch all users from the server
       const usersResponse = await fetch('https://expensetracker-1-5eht.onrender.com/users');
       const users = await usersResponse.json();
