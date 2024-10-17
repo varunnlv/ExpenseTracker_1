@@ -45,113 +45,213 @@ export async function dashboardAction({ request }) {
       localStorage.setItem("userName", JSON.stringify(values.userName));
       localStorage.setItem("password", JSON.stringify(values.password));
       console.log('Please Wait... ');
-      // Fetch all users from the server
-      const usersResponse = await fetch('https://expensetracker-1-5eht.onrender.com/users');
-      const users = await usersResponse.json();
 
-      console.log('1');
 
-      // Check if the username already exists in the users database
-      const existingUser = users.find(user => user.username === values.userName);
-      if (existingUser) {
-        console.log('already exists');
+      
 
-        // Make a GET request to the server to retrieve userId based on username
-        const response = await fetch(`https://expensetracker-1-5eht.onrender.com/users?username=${values.userName}`);
-        const userData = await response.json();
+      try {
+        const usersResponse = await fetchUsersWithTimeout('http://localhost:3001/users', 5000);
+        const existingUser = usersResponse.find(user => user.username === values.userName);
 
-        if (!userData || userData.length === 0) {
-          throw new Error("User not found.");
+        if (existingUser) 
+        {
+
+          const response = await fetch(`http://localhost:3001/users?username=${values.userName}`);
+          const userData = await response.json();
+          if (!userData || userData.length === 0) {
+            throw new Error("User not found.");
+          }
+          const userId = userData[0].id;
+          const usersResponse2 = await fetch('http://localhost:3001/budgets');
+          const budgets2 = await usersResponse2.json();
+          const userBudgets = budgets2.filter(budget => budget.userId === userId);
+          console.log(userBudgets);
+          userBudgets.forEach(async budget => {
+            try {
+              await createBudget({
+                name: budget.budgetname,
+                amount: budget.budgetamount,
+              });
+              console.log(`Budget ${budget.budgetname} created.`);
+            } catch (error) {
+              console.error(`Error creating budget ${budget.budgetname}:`, error);
+            }
+          });
+          const usersResponse3 = await fetch('http://localhost:3001/expenses');
+          const budgets3 = await usersResponse3.json();
+          const userexpenses = budgets3.filter(expense => expense.budgetId === userId);
+          console.log(userexpenses);
+          userexpenses.forEach(async expense => {
+            try {
+              createExpense({
+                name: values.newExpense,
+                amount: values.newExpenseAmount,
+                budgetId: values.newExpenseBudget,
+              });
+              console.log(`Budget ${expense.expensename} created.`);
+            } catch (error) {
+              console.error(`Error creating budget ${budget.budgetname}:`, error);
+            }
+          });
+          
+        } 
+        else 
+        {
+
+          const newUser = {
+            username: values.userName,
+            password: values.password,
+          };
+          
+            try
+            {            
+              await fetch('http://localhost:3001/users', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newUser),
+              });
+      
+              console.log('New user created');
+      
+            } 
+            catch (e) 
+            {
+              throw new Error("There was a problem creating your user.");
+            }
+            
         }
 
-        const userId = userData[0].id;
+      } 
+      catch (error) {
 
-        const usersResponse2 = await fetch('https://expensetracker-1-5eht.onrender.com/budgets');
-        const budgets2 = await usersResponse2.json();
-
-
-        // // Filter budgets by userId
-        const userBudgets = budgets2.filter(budget => budget.userId === userId);
-        console.log(userBudgets);
-
-        // Loop over userBudgets and create budgets
-        userBudgets.forEach(async budget => {
-          try {
-            await createBudget({
-              name: budget.budgetname,
-              amount: budget.budgetamount,
-            });
-            console.log(`Budget ${budget.budgetname} created.`);
-          } catch (error) {
-            console.error(`Error creating budget ${budget.budgetname}:`, error);
-          }
-        });
+        if (error.message === 'Timeout') 
+        {
 
 
-
-        const usersResponse3 = await fetch('https://expensetracker-1-5eht.onrender.com/expenses');
-        const budgets3 = await usersResponse3.json();
-
-        // // Filter budgets by userId
-        const userexpenses = budgets3.filter(expense => expense.budgetId === userId);
-        console.log(userexpenses);
-
-
-
-
-        // Loop over userBudgets and create budgets
-        userexpenses.forEach(async expense => {
-          try {
-            createExpense({
-              name: values.newExpense,
-              amount: values.newExpenseAmount,
-              budgetId: values.newExpenseBudget,
-            });
-            console.log(`Budget ${expense.expensename} created.`);
-          } catch (error) {
-            console.error(`Error creating budget ${budget.budgetname}:`, error);
-          }
-        });
-
-
-
-
-
-
-
-
-
-
+        } 
+        else 
+        {
+          console.error('Error fetching users:', error);
+        }
 
       }
-      else {
 
-        const newUser = {
-          username: values.userName,
-          password: values.password,
-        };
 
-        console.log('2');
-          try{
+
+
+
+
+
+      
+      // // Fetch all users from the server
+      // const usersResponse = await fetch('https://expensetracker-1-5eht.onrender.com/users');
+      // const users = await usersResponse.json();
+
+      // console.log('1');
+
+      // // Check if the username already exists in the users database
+      // const existingUser = users.find(user => user.username === values.userName);
+      // if (existingUser) {
+      //   console.log('already exists');
+
+      //   // Make a GET request to the server to retrieve userId based on username
+      //   const response = await fetch(`https://expensetracker-1-5eht.onrender.com/users?username=${values.userName}`);
+      //   const userData = await response.json();
+
+      //   if (!userData || userData.length === 0) {
+      //     throw new Error("User not found.");
+      //   }
+
+      //   const userId = userData[0].id;
+
+      //   const usersResponse2 = await fetch('https://expensetracker-1-5eht.onrender.com/budgets');
+      //   const budgets2 = await usersResponse2.json();
+
+
+      //   // // Filter budgets by userId
+      //   const userBudgets = budgets2.filter(budget => budget.userId === userId);
+      //   console.log(userBudgets);
+
+      //   // Loop over userBudgets and create budgets
+      //   userBudgets.forEach(async budget => {
+      //     try {
+      //       await createBudget({
+      //         name: budget.budgetname,
+      //         amount: budget.budgetamount,
+      //       });
+      //       console.log(`Budget ${budget.budgetname} created.`);
+      //     } catch (error) {
+      //       console.error(`Error creating budget ${budget.budgetname}:`, error);
+      //     }
+      //   });
+
+
+
+      //   const usersResponse3 = await fetch('https://expensetracker-1-5eht.onrender.com/expenses');
+      //   const budgets3 = await usersResponse3.json();
+
+      //   // // Filter budgets by userId
+      //   const userexpenses = budgets3.filter(expense => expense.budgetId === userId);
+      //   console.log(userexpenses);
+
+
+
+
+      //   // Loop over userBudgets and create budgets
+      //   userexpenses.forEach(async expense => {
+      //     try {
+      //       createExpense({
+      //         name: values.newExpense,
+      //         amount: values.newExpenseAmount,
+      //         budgetId: values.newExpenseBudget,
+      //       });
+      //       console.log(`Budget ${expense.expensename} created.`);
+      //     } catch (error) {
+      //       console.error(`Error creating budget ${budget.budgetname}:`, error);
+      //     }
+      //   });
+
+
+
+
+
+
+
+
+
+
+
+      // }
+      // else {
+
+      //   const newUser = {
+      //     username: values.userName,
+      //     password: values.password,
+      //   };
+
+      //   console.log('2');
+      //     try{
     
                
-            await fetch('https://expensetracker-1-5eht.onrender.com/users', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(newUser),
-            });
+      //       await fetch('https://expensetracker-1-5eht.onrender.com/users', {
+      //         method: 'POST',
+      //         headers: {
+      //           'Content-Type': 'application/json',
+      //         },
+      //         body: JSON.stringify(newUser),
+      //       });
     
-            console.log('New user created');
+      //       console.log('New user created');
     
-             } catch (e) {
-          throw new Error("There was a problem creating your user.");
-        }
-      }
+      //        } catch (e) {
+      //     throw new Error("There was a problem creating your user.");
+      //   }
+      // }
 
 
-      return toast.success(`Welcome, ${values.userName}`);
+      // return toast.success(`Welcome, ${values.userName}`);
     } catch (e) {
       throw new Error("There was a problem creating your account.");
     }
