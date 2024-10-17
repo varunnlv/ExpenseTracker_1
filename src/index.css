@@ -683,11 +683,6 @@ table a {
   transition: transform 0.2s ease-in-out;
 }
 
-/* Error input shake animation */
-input:invalid {
-  animation: shake 0.3s ease;
-  border-color: red;
-}
 
 /* Dashboard Animation */
 .dashboard {
