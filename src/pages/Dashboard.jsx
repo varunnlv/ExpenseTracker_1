@@ -46,7 +46,7 @@ export async function dashboardAction({ request }) {
       localStorage.setItem("password", JSON.stringify(values.password));
       console.log('Please Wait... ');
       // Fetch all users from the server
-      const usersResponse = await fetch('https://expense-v-tracker.netlify.app/users');
+      const usersResponse = await fetch('https://expensetracker-1-5eht.onrender.com/users');
       const users = await usersResponse.json();
 
       console.log('1');
@@ -57,7 +57,7 @@ export async function dashboardAction({ request }) {
         console.log('already exists');
 
         // Make a GET request to the server to retrieve userId based on username
-        const response = await fetch(`https://expense-v-tracker.netlify.app/users?username=${values.userName}`);
+        const response = await fetch(`https://expensetracker-1-5eht.onrender.com/users?username=${values.userName}`);
         const userData = await response.json();
 
         if (!userData || userData.length === 0) {
@@ -66,7 +66,7 @@ export async function dashboardAction({ request }) {
 
         const userId = userData[0].id;
 
-        const usersResponse2 = await fetch('https://expense-v-tracker.netlify.app/budgets');
+        const usersResponse2 = await fetch('https://expensetracker-1-5eht.onrender.com/budgets');
         const budgets2 = await usersResponse2.json();
 
 
@@ -89,7 +89,7 @@ export async function dashboardAction({ request }) {
 
 
 
-        const usersResponse3 = await fetch('https://expense-v-tracker.netlify.app/expenses');
+        const usersResponse3 = await fetch('https://expensetracker-1-5eht.onrender.com/expenses');
         const budgets3 = await usersResponse3.json();
 
         // // Filter budgets by userId
@@ -135,7 +135,7 @@ export async function dashboardAction({ request }) {
           try{
     
                
-            await fetch('https://expense-v-tracker.netlify.app/users', {
+            await fetch('https://expensetracker-1-5eht.onrender.com/users', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -168,7 +168,7 @@ export async function dashboardAction({ request }) {
       const username = JSON.parse(localStorage.getItem("userName")); // Retrieve username from localStorage
 
       // Make a GET request to the server to retrieve userId based on username
-      const response = await fetch(`https://expense-v-tracker.netlify.app/users?username=${username}`);
+      const response = await fetch(`https://expensetracker-1-5eht.onrender.com/users?username=${username}`);
       const userData = await response.json();
 
       if (!userData || userData.length === 0) {
@@ -183,7 +183,7 @@ export async function dashboardAction({ request }) {
         userId: userId,
       };
 
-      await fetch(`https://expense-v-tracker.netlify.app/budgets`, {
+      await fetch(`https://expensetracker-1-5eht.onrender.com/budgets`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
