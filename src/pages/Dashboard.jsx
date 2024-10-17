@@ -39,6 +39,14 @@ export async function dashboardAction({ request }) {
   const data = await request.formData();
   const { _action, ...values } = Object.fromEntries(data);
   toast.success(`started intially`);
+
+  const fetchUsersWithTimeout = async (url, timeout) => {
+    return Promise.race([
+        fetch(url).then(response => response.json()), // Fetch and parse response
+        new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), timeout)) // Timeout after specified ms
+    ]);
+};
+  
   // new user submission
   if (_action === "newUser") {
     try {
