@@ -138,6 +138,8 @@ export async function dashboardAction({ request }) {
 
       }
 
+      return toast.success(`Welcome, ${values.userName}`);
+
 
 
 
